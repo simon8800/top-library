@@ -3,12 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
 <body>
   <h1>The Odin Project - Library</h1>
   <button class="add-btn">Add book entry</button>
-  <div class="form-container"></div>
+  <div class="form-modal">
+    <div class="modal-content">
+      <h3>Book information</h3>
+      <form action="">
+        <label for="title">Title:</label><input id="title" type="text" placeholder="Enter title">
+        <br>
+        <label for="author">Author:</label><input id="author" type="text" placeholder="Enter author">
+        <br>
+        <label for="pages">Pages:</label><input id="pages" type="number" min="0">
+        <br>
+        <label for="read">Read</label><input id="read" type="checkbox">
+        <br>
+        <input type="submit" value="Add book">
+      </form>
+    </div>
+  </div>
   <ul class="library">
     <li>Dummy Book</li>
   </ul>
