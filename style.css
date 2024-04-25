@@ -63,5 +63,7 @@ body {
 }
 
 .book-card {
-  
+  background-color: #78716c;
+  padding: 1.5em;
+  border: 5px solid #0c0a09;
 }
