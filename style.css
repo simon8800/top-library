@@ -66,4 +66,13 @@ body {
   background-color: #78716c;
   padding: 1.5em;
   border: 5px solid #0c0a09;
+  font-size: 1.05rem;
+}
+
+.btn {
+  border: none;
+  font-size: 1.05rem;
+  color: white;
+  background-color: #0c0a09;
+  font-weight: bold;
 }
