@@ -4,26 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+  <title>The Odin Library</title>
 </head>
 <body>
   <div class="container">
-    <h1>The Odin Project - Library</h1>
+    <h1>The Odin Library</h1>
     <button class="add-btn">Add book entry</button>
     <div class="form-modal">
       <div class="modal-content">
         <span class="close">&times;</span>
         <h3>Book information</h3>
-        <form action="">
-          <label for="title">Title:</label><input id="title" type="text" placeholder="Enter title">
+        <form id="book-form" action="">
+          <label for="title">Title:</label><input required name="title" id="title" type="text" placeholder="Enter title">
           <br>
-          <label for="author">Author:</label><input id="author" type="text" placeholder="Enter author">
+          <label for="author">Author:</label><input required name="author" id="author" type="text" placeholder="Enter author">
           <br>
-          <label for="pages">Pages:</label><input id="pages" type="number" min="0">
+          <label for="pages">Pages:</label><input required name="pages" id="pages" type="number" min="0">
           <br>
-          <label for="read">Read</label><input id="read" type="checkbox">
+          <label for="read">Read</label><input required name="read" id="read" type="checkbox">
           <br>
-          <input type="submit" value="Add book">
+          <input class="submit" type="submit" value="Add book">
         </form>
       </div>
     </div>

@@ -14,7 +14,7 @@ function addBook(title, author, pages, read) {
 }
 
 // Initialize empty library
-const myLibrary = [];
+let myLibrary = [];
 const shelf = document.querySelector('.shelf');
 
 // Dummy book data
@@ -54,7 +54,6 @@ window.onclick = function(event) {
 
 // Create a bookCard given a book
 function createBookCard(book) {
-  console.log("createBookCard");
   const bookCard = document.createElement('li');
   bookCard.classList.add('book-card');
 
@@ -78,7 +77,9 @@ function createBookCard(book) {
   removeButton.classList.add('btn', 'remove')
   removeButton.textContent = "Remove"
   removeButton.onclick = function(event) {
+    myLibrary = myLibrary.filter(currentBook => currentBook.title != book.title);
     removeButton.parentElement.remove();
+    console.log(myLibrary);
   }
 
   bookCard.appendChild(bookTitle)
@@ -90,3 +91,21 @@ function createBookCard(book) {
 
   return bookCard;
 }
+
+const form = document.getElementById('book-form');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  const formValues = {};
+
+  for (let element of form.elements) {
+    if (element.name && element.name == 'read') {
+      formValues[element.name] = element.value == 'on' ? true : false;
+    } else if (element.name) {
+      formValues[element.name] = element.value;
+    }
+  }
+
+  console.log(formValues);
+  modal.style.display = 'none';
+})
