@@ -9,8 +9,8 @@ function addBook(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
   
-  const bookItem = createBookCard(newBook);
-  shelf.appendChild(bookItem);
+  const bookCard = createBookCard(newBook);
+  shelf.appendChild(bookCard);
 }
 
 // Initialize empty library
@@ -52,7 +52,7 @@ window.onclick = function(event) {
   }
 }
 
-
+// Create a bookCard given a book
 function createBookCard(book) {
   console.log("createBookCard");
   const bookCard = document.createElement('li');
@@ -72,11 +72,14 @@ function createBookCard(book) {
 
   const changeReadButton = document.createElement('button');
   changeReadButton.classList.add('btn', 'read')
-  changeReadButton.textContent = "Not Read"
+  changeReadButton.textContent = `${book.read ? "Not Read Yet" : "Read"}`
 
   const removeButton = document.createElement('button');
   removeButton.classList.add('btn', 'remove')
   removeButton.textContent = "Remove"
+  removeButton.onclick = function(event) {
+    removeButton.parentElement.remove();
+  }
 
   bookCard.appendChild(bookTitle)
   bookCard.appendChild(bookAuthor)
