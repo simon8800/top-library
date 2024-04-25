@@ -84,7 +84,6 @@ function createBookCard(book) {
   removeButton.onclick = function(event) {
     myLibrary = myLibrary.filter(currentBook => currentBook.title != book.title);
     removeButton.parentElement.remove();
-    console.log(myLibrary);
   }
 
   bookCard.appendChild(bookTitle)
