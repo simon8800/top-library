@@ -8,10 +8,13 @@ function Book(title, author, pages, read) {
 function addBook(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
-  console.log("New book added!");
-  console.log(myLibrary);
+
 }
 
+// Initialize empty library
+const myLibrary = [];
+
+// Dummy book data
 const books = [
   {title: 'The Women: A Novel', author: 'Kristin Hannah', pages: 480, read: false},
   {title: 'The Familiar', author: 'Leigh Bardugo', pages: 880, read: false},
@@ -19,10 +22,13 @@ const books = [
   {title: 'Toxic Prey', author: 'John Sandford', pages: 400, read: false},
 ]
 
-const myLibrary = [];
-const addBookEntryBtn = document.querySelector(".add-btn");
+// Add dummy books to library
+for (let book of books) {
+  addBook(book.title, book.author, book.pages, book.read);
+}
 
-// modal elements
+// Elements to make modal work
+const addBookEntryBtn = document.querySelector(".add-btn");
 const modal = document.querySelector('.form-modal');
 const close = document.querySelector('.close');
 
@@ -42,3 +48,5 @@ window.onclick = function(event) {
     modal.style.display = 'none';
   }
 }
+
+const shelf = document.querySelector('.shelf');
