@@ -8,11 +8,14 @@ function Book(title, author, pages, read) {
 function addBook(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
-
+  
+  const bookItem = createBookCard(newBook);
+  shelf.appendChild(bookItem);
 }
 
 // Initialize empty library
 const myLibrary = [];
+const shelf = document.querySelector('.shelf');
 
 // Dummy book data
 const books = [
@@ -49,4 +52,38 @@ window.onclick = function(event) {
   }
 }
 
-const shelf = document.querySelector('.shelf');
+
+function createBookCard(book) {
+  console.log("createBookCard");
+  const bookCard = document.createElement('li');
+  bookCard.classList.add('book-card');
+
+  const bookTitle = document.createElement('h3');
+  bookTitle.textContent = `Title: ${book.title}`;
+
+  const bookAuthor = document.createElement('p');
+  bookAuthor.textContent = `Author: ${book.author}`;
+
+  const bookPages = document.createElement('p');
+  bookPages.textContent = `Pages: ${book.pages}`;
+
+  const bookStatus = document.createElement('p');
+  bookStatus.textContent = `Status: ${book.read ? "Read" : "Not Read Yet"}`;
+
+  const changeReadButton = document.createElement('button');
+  changeReadButton.classList.add('btn', 'read')
+  changeReadButton.textContent = "Not Read"
+
+  const removeButton = document.createElement('button');
+  removeButton.classList.add('btn', 'remove')
+  removeButton.textContent = "Remove"
+
+  bookCard.appendChild(bookTitle)
+  bookCard.appendChild(bookAuthor)
+  bookCard.appendChild(bookPages)
+  bookCard.appendChild(bookStatus)
+  bookCard.appendChild(changeReadButton)
+  bookCard.appendChild(removeButton)
+
+  return bookCard;
+}
