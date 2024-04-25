@@ -21,7 +21,24 @@ const books = [
 
 const myLibrary = [];
 const addBookEntryBtn = document.querySelector(".add-btn");
-console.log(addBookEntryBtn);
+
+// modal elements
+const modal = document.querySelector('.form-modal');
+const close = document.querySelector('.close');
+
+// When user clicks Add Book Entry, open the modal
 addBookEntryBtn.onclick = function () {
-  console.log("Add new book clicked!");
+  modal.style.display = 'block';
 };
+
+// When user clicks on x, close the modal
+close.onclick = function() {
+  modal.style.display = 'none';
+}
+
+// When user clicks outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+}
