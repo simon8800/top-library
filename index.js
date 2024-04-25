@@ -5,8 +5,8 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-function addBook(title, author, pages, read) {
-  const newBook = new Book(title, author, pages, read);
+function addBook(bookData) {
+  const newBook = new Book(bookData.title, bookData.author, bookData.pages, bookData.read);
   myLibrary.push(newBook);
   
   const bookCard = createBookCard(newBook);
@@ -27,7 +27,7 @@ const books = [
 
 // Add dummy books to library
 for (let book of books) {
-  addBook(book.title, book.author, book.pages, book.read);
+  addBook(book);
 }
 
 // Elements to make modal work
@@ -72,6 +72,11 @@ function createBookCard(book) {
   const changeReadButton = document.createElement('button');
   changeReadButton.classList.add('btn', 'read')
   changeReadButton.textContent = `${book.read ? "Not Read Yet" : "Read"}`
+  changeReadButton.onclick = function(event) {
+    book.read = !book.read;
+    changeReadButton.textContent = `${book.read ? "Not Read Yet" : "Read"}`
+    bookStatus.textContent = `Status: ${book.read ? "Read" : "Not Read Yet"}`;
+  }
 
   const removeButton = document.createElement('button');
   removeButton.classList.add('btn', 'remove')
@@ -101,11 +106,13 @@ form.addEventListener('submit', function(event) {
   for (let element of form.elements) {
     if (element.name && element.name == 'read') {
       formValues[element.name] = element.value == 'on' ? true : false;
+      element.value = 'off'
     } else if (element.name) {
       formValues[element.name] = element.value;
+      element.value = '';
     }
   }
 
-  console.log(formValues);
+  addBook(formValues);
   modal.style.display = 'none';
 })
